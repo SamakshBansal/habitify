@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'screens/journal.dart';
+import 'screens/progress.dart';
+import 'screens/setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,24 +40,9 @@ class _MainState extends State<Main> {
   }
 
   final screens = [
-    const Center(
-      child: Text(
-        'Journal',
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
-    const Center(
-      child: Text(
-        'Progress',
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
-    const Center(
-      child: Text(
-        'Setting',
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
+    const MyJournal(),
+    const MyProgress(),
+    const MySetting(),
   ];
 
   @override
@@ -66,8 +54,8 @@ class _MainState extends State<Main> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.blue,
-        selectedItemColor: Colors.white,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey.shade400,
         iconSize: 30,
         currentIndex: currentIndex,
