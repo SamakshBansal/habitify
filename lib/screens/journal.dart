@@ -68,17 +68,15 @@ class _MyJournalState extends State<MyJournal> {
                     })
               ],
             ),
-            Row(
-              children: [
-                horizontalList2,
-                IconButton(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {},
-                ),
-              ],
-            ),
+            horizontalList2,
+            const Divider(color: Colors.black),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -87,16 +85,17 @@ class _MyJournalState extends State<MyJournal> {
 Widget horizontalList2 = Container(
   margin: const EdgeInsets.symmetric(vertical: 20.0),
   height: 40,
-  width: 340,
+  width: 390,
   child: ListView(
     scrollDirection: Axis.horizontal,
     children: <Widget>[
       ElevatedButton(
         style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
-        ))),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          )),
+        ),
         onPressed: () {},
         child: Row(
           children: const [
@@ -127,10 +126,12 @@ Widget horizontalList2 = Container(
       ),
       ElevatedButton(
         style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
-        ))),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+            ),
+          ),
+        ),
         onPressed: () {},
         child: Row(
           children: const [
@@ -139,6 +140,24 @@ Widget horizontalList2 = Container(
           ],
         ),
       ),
+      const SizedBox(
+        width: 20,
+      ),
+      ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          )),
+        ),
+        onPressed: () {},
+        child: Row(
+          children: const [
+            Icon(Icons.add),
+            Text('  New Area'),
+          ],
+        ),
+      )
     ],
   ),
 );
