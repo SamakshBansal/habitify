@@ -28,49 +28,52 @@ class _MyJournalState extends State<MyJournal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              '  ' + DateFormat.MMMd().format(DateTime.now()).toUpperCase(),
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+      body: Container(
+        margin: const EdgeInsets.all(10),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            Row(
-              children: <Widget>[
-                SizedBox(
-                  width: 170,
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                    controller: _controller,
-                    enabled: _isEnable,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
+              Text(
+                '  ' + DateFormat.MMMd().format(DateTime.now()).toUpperCase(),
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 170,
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                      controller: _controller,
+                      enabled: _isEnable,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),
                     ),
                   ),
-                ),
-                IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {
-                      setState(() {
-                        _isEnable = true;
-                      });
-                    })
-              ],
-            ),
-            horizontalList2,
-            const Divider(color: Colors.black),
-          ],
+                  IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {
+                        setState(() {
+                          _isEnable = true;
+                        });
+                      })
+                ],
+              ),
+              horizontalList2,
+              const Divider(color: Colors.black),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
