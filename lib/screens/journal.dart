@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+// import 'package:habitify/screens/newarea.dart';
 
 class MyJournal extends StatefulWidget {
   const MyJournal({Key? key}) : super(key: key);
@@ -9,8 +10,7 @@ class MyJournal extends StatefulWidget {
 }
 
 class _MyJournalState extends State<MyJournal> {
-  TextEditingController _controller =
-      TextEditingController(text: "Festive Leave");
+  TextEditingController _controller = TextEditingController();
   bool _isEnable = false;
 
   @override
