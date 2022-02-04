@@ -100,11 +100,13 @@ class _MyJournalState extends State<MyJournal> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ))),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                        ),
+                      ),
                       onPressed: () {},
                       child: Row(
                         children: const [
@@ -168,30 +170,28 @@ class _MyJournalState extends State<MyJournal> {
               ),
               SizedBox(
                 height: 40,
-                child: Expanded(
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton(
-                      value: dropdownValue,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.black),
-                      onChanged: (String? newValue) {
-                        setState(
-                          () {
-                            dropdownValue = newValue!;
-                          },
-                        );
-                      },
-                      items: <String>['This Week', 'This Month', 'This Year']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                    value: dropdownValue,
+                    icon: const Icon(Icons.arrow_drop_down),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black),
+                    onChanged: (String? newValue) {
+                      setState(
+                        () {
+                          dropdownValue = newValue!;
+                        },
+                      );
+                    },
+                    items: <String>['This Week', 'This Month', 'This Year']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
                   ),
                 ),
               ),
