@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habitify/screens/newarea.dart';
 import 'package:intl/intl.dart';
 // import 'package:habitify/screens/newarea.dart';
 
@@ -12,6 +13,7 @@ class MyJournal extends StatefulWidget {
 class _MyJournalState extends State<MyJournal> {
   TextEditingController _controller = TextEditingController();
   bool _isEnable = false;
+  String dropdownValue = 'This Week';
 
   @override
   void initState() {
@@ -70,8 +72,187 @@ class _MyJournalState extends State<MyJournal> {
                       })
                 ],
               ),
-              horizontalList2,
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20.0),
+                height: 40,
+                width: 390,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        )),
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                        children: const [
+                          Icon(Icons.library_books_outlined),
+                          Text('  All Habits'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
+                      onPressed: () {},
+                      child: Row(
+                        children: const [
+                          Icon(Icons.folder),
+                          Text('  Morning'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                        children: const [
+                          Icon(Icons.wb_sunny),
+                          Text('  Afternoon'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        )),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return const NewArea();
+                          }),
+                        );
+                      },
+                      child: Row(
+                        children: const [
+                          Icon(Icons.add),
+                          Text('  New Area'),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
               const Divider(color: Colors.black),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 40,
+                child: Expanded(
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_drop_down),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.black),
+                      onChanged: (String? newValue) {
+                        setState(
+                          () {
+                            dropdownValue = newValue!;
+                          },
+                        );
+                      },
+                      items: <String>['This Week', 'This Month', 'This Year']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black)),
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            const Icon(Icons.task_alt_outlined),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Task to do',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text('0/1 times'),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            OutlinedButton.icon(
+                              icon: const Icon(Icons.check),
+                              onPressed: () {},
+                              label: const Text('Done'),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -84,83 +265,3 @@ class _MyJournalState extends State<MyJournal> {
     );
   }
 }
-
-Widget horizontalList2 = Container(
-  margin: const EdgeInsets.symmetric(vertical: 20.0),
-  height: 40,
-  width: 390,
-  child: ListView(
-    scrollDirection: Axis.horizontal,
-    children: <Widget>[
-      ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-          )),
-        ),
-        onPressed: () {},
-        child: Row(
-          children: const [
-            Icon(Icons.library_books_outlined),
-            Text('  All Habits'),
-          ],
-        ),
-      ),
-      const SizedBox(
-        width: 20,
-      ),
-      ElevatedButton(
-        style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
-        ))),
-        onPressed: () {},
-        child: Row(
-          children: const [
-            Icon(Icons.folder),
-            Text('  Morning'),
-          ],
-        ),
-      ),
-      const SizedBox(
-        width: 20,
-      ),
-      ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-            ),
-          ),
-        ),
-        onPressed: () {},
-        child: Row(
-          children: const [
-            Icon(Icons.wb_sunny),
-            Text('  Afternoon'),
-          ],
-        ),
-      ),
-      const SizedBox(
-        width: 20,
-      ),
-      ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-          )),
-        ),
-        onPressed: () {},
-        child: Row(
-          children: const [
-            Icon(Icons.add),
-            Text('  New Area'),
-          ],
-        ),
-      )
-    ],
-  ),
-);

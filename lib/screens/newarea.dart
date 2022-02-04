@@ -39,7 +39,9 @@ class _NewAreaState extends State<NewArea> {
               child: Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: const Icon(Icons.cancel_sharp),
                   ),
                   const Expanded(
