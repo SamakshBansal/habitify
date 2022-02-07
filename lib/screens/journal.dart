@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habitify/screens/newarea.dart';
 import 'package:habitify/screens/task.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 // import 'package:habitify/screens/newarea.dart';
 
 class MyJournal extends StatefulWidget {
@@ -220,11 +221,28 @@ class _MyJournalState extends State<MyJournal> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.blue,
+      floatingActionButton: SpeedDial(
         child: const Icon(Icons.add),
+        overlayColor: Colors.grey,
+        overlayOpacity: 0.9,
+        children: [
+          SpeedDialChild(
+            child: const Icon(Icons.mood_bad),
+            label: "Break Bad Habit",
+            onTap: () {},
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.mood_sharp),
+            label: "Create Good Habit",
+            onTap: () {},
+          ),
+        ],
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   backgroundColor: Colors.blue,
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
