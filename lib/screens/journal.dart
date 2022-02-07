@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habitify/screens/newarea.dart';
+import 'package:habitify/screens/task.dart';
 import 'package:intl/intl.dart';
 // import 'package:habitify/screens/newarea.dart';
 
@@ -201,55 +202,17 @@ class _MyJournalState extends State<MyJournal> {
               Expanded(
                 child: ListView(
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black)),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            const Icon(Icons.task_alt_outlined),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text(
-                                      'Task to do',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text('0/1 times'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            OutlinedButton.icon(
-                              icon: const Icon(Icons.check),
-                              onPressed: () {},
-                              label: const Text('Done'),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
+                    TaskWidget(context),
                   ],
                 ),
               )
@@ -261,6 +224,76 @@ class _MyJournalState extends State<MyJournal> {
         onPressed: () {},
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class TaskWidget extends StatefulWidget {
+  const TaskWidget(
+    BuildContext context, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<TaskWidget> createState() => _TaskWidgetState();
+}
+
+class _TaskWidgetState extends State<TaskWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return const MyTask();
+          }),
+        );
+      },
+      child: Container(
+        height: 60,
+        decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 10,
+            ),
+            const Icon(Icons.task_alt_outlined),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Task to do',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text('0/1 times'),
+                  ],
+                ),
+              ),
+            ),
+            OutlinedButton.icon(
+              icon: const Icon(Icons.check),
+              onPressed: () {},
+              label: const Text('Done'),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+          ],
+        ),
       ),
     );
   }
